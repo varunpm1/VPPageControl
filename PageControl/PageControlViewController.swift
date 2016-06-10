@@ -42,7 +42,7 @@ extension PageControlViewController : PageControlDelegate {
             pageControl.backgroundColor = UIColor.greenColor()
             
         case 3:
-            pageControl.backgroundColor = UIColor.blueColor()
+            pageControl.backgroundColor = UIColor.darkGrayColor()
             
         default:
             pageControl.backgroundColor = UIColor.whiteColor()

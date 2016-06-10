@@ -33,7 +33,7 @@ class PageControl: UIView {
     private let pageControlSpacing : CGFloat = 7
     private let pageControlWidth : CGFloat = 7
     
-    var pageControlType = PageControlType.DiamondFilledBorderSelected
+    var pageControlType = PageControlType.DiamondFilled
     
     weak var delegate : PageControlDelegate?
     
@@ -85,8 +85,10 @@ class PageControl: UIView {
                 let pageControlView = viewWithTag(previousPageControlIndex + 1)
                 setUIForPageControlView(pageControlView, withIndex: previousPageControlIndex)
                 
-                let currentPageControlView = viewWithTag(currentPage + 1)
-                setUIForPageControlView(currentPageControlView, withIndex: currentPage)
+                UIView.animateWithDuration(0.15, animations: {
+                    let currentPageControlView = self.viewWithTag(self.currentPage + 1)
+                    self.setUIForPageControlView(currentPageControlView, withIndex: self.currentPage)
+                })
                 
                 delegate?.pageControl(self, didSelectPageIndex: currentPage)
             }
