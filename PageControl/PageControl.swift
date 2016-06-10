@@ -20,12 +20,14 @@ class PageControl: UIView {
         case RoundedBorder // Circular with border type. Only Border and border color will be representing the states
         case SquareFilled // Square with filled states. Fill color represent the states
         case SquareBorder // Square with border type. Border color will be representing the states
+        case DiamondFilled // Diamond with filled states. Fill color represent the states
+        case DiamondBorder // Diamond with border type. Border color will be representing the states
     }
     
     private let pageControlSpacing : CGFloat = 7
     private let pageControlWidth : CGFloat = 7
     
-    var pageControlType = PageControlType.RoundedFilled
+    var pageControlType = PageControlType.DiamondFilled
     
     weak var delegate : PageControlDelegate?
     
@@ -102,28 +104,30 @@ class PageControl: UIView {
     private func setUIForPageControlView(pageControlView : UIView?, withIndex pageControlIndex : Int) {
         switch pageControlType {
         case .RoundedFilled:
-            pageControlView?.layer.cornerRadius = pageControlWidth / 2
-            pageControlView?.layer.masksToBounds = true
-            pageControlView?.layer.borderWidth = 0.0
-            pageControlView?.backgroundColor = getPageControlColorForIndex(pageControlIndex)
+            createRoundedPageControl(pageControlView)
+            createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
             
         case .RoundedBorder:
-            pageControlView?.layer.cornerRadius = pageControlWidth / 2
-            pageControlView?.layer.masksToBounds = true
-            pageControlView?.layer.borderWidth = 1.0
-            pageControlView?.layer.borderColor = getPageControlColorForIndex(pageControlIndex).CGColor
+            createRoundedPageControl(pageControlView)
+            createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
             
         case .SquareFilled:
-            pageControlView?.layer.cornerRadius = 0.0
-            pageControlView?.layer.masksToBounds = true
-            pageControlView?.layer.borderWidth = 0.0
-            pageControlView?.backgroundColor = getPageControlColorForIndex(pageControlIndex)
+            createSquarePageControl(pageControlView)
+            createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
             
         case .SquareBorder:
-            pageControlView?.layer.cornerRadius = 0.0
-            pageControlView?.layer.masksToBounds = true
-            pageControlView?.layer.borderWidth = 1.0
-            pageControlView?.layer.borderColor = getPageControlColorForIndex(pageControlIndex).CGColor
+            createSquarePageControl(pageControlView)
+            createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
+            
+        case .DiamondFilled:
+            createSquarePageControl(pageControlView)
+            createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
+            createDiamondPageControl(pageControlView)
+            
+        case .DiamondBorder:
+            createSquarePageControl(pageControlView)
+            createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
+            createDiamondPageControl(pageControlView)
         }
     }
     
@@ -144,5 +148,33 @@ class PageControl: UIView {
     //MARK: Helper methods
     private func getPageControlColorForIndex(index : Int) -> UIColor {
         return (currentPage == index) ? currentPageIndicatorTintColor : pageIndicatorTintColor
+    }
+    
+    // Create pageControl shapes
+    private func createRoundedPageControl(pageControlView : UIView?) {
+        pageControlView?.layer.cornerRadius = pageControlWidth / 2
+        pageControlView?.layer.masksToBounds = true
+    }
+    
+    private func createSquarePageControl(pageControlView : UIView?) {
+        pageControlView?.layer.cornerRadius = 0.0
+        pageControlView?.layer.masksToBounds = true
+    }
+    
+    private func createDiamondPageControl(pageControlView : UIView?) {
+        var transform = CGAffineTransformIdentity
+        transform = CGAffineTransformRotate(transform, CGFloat(M_PI_4))
+        pageControlView?.transform = transform
+    }
+    
+    // Create pageControl displayColor
+    private func createBorderPageControl(pageControlView : UIView?, pageControlIndex : Int) {
+        pageControlView?.layer.borderWidth = 1.0
+        pageControlView?.layer.borderColor = getPageControlColorForIndex(pageControlIndex).CGColor
+    }
+    
+    private func createFilledPageControl(pageControlView : UIView?, pageControlIndex : Int) {
+        pageControlView?.layer.borderWidth = 0.0
+        pageControlView?.backgroundColor = getPageControlColorForIndex(pageControlIndex)
     }
 }
