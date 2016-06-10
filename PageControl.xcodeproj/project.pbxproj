@@ -13,7 +13,7 @@
 		8B5587FE1D08460E00E25F18 /* PageControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5587FC1D08460E00E25F18 /* PageControlViewController.xib */; };
 		8B5588001D0846E100E25F18 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5587FF1D0846E100E25F18 /* Default-568h@2x.png */; };
 		8B5588021D08479A00E25F18 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5588011D08479A00E25F18 /* LaunchScreen.xib */; };
-		8B5588041D0848DF00E25F18 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5588031D0848DF00E25F18 /* PageControl.swift */; };
+		8B5588041D0848DF00E25F18 /* VPPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5588031D0848DF00E25F18 /* VPPageControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		8B5587FC1D08460E00E25F18 /* PageControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageControlViewController.xib; sourceTree = "<group>"; };
 		8B5587FF1D0846E100E25F18 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8B5588011D08479A00E25F18 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		8B5588031D0848DF00E25F18 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		8B5588031D0848DF00E25F18 /* VPPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPPageControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 				8B5587E91D08458900E25F18 /* AppDelegate.swift */,
 				8B5587FB1D08460E00E25F18 /* PageControlViewController.swift */,
 				8B5587FC1D08460E00E25F18 /* PageControlViewController.xib */,
-				8B5588031D0848DF00E25F18 /* PageControl.swift */,
+				8B5588031D0848DF00E25F18 /* VPPageControl.swift */,
 				8B5587F01D08458900E25F18 /* Assets.xcassets */,
 				8B5588011D08479A00E25F18 /* LaunchScreen.xib */,
 				8B5587F51D08458900E25F18 /* Info.plist */,
@@ -144,7 +144,7 @@
 			files = (
 				8B5587EA1D08458900E25F18 /* AppDelegate.swift in Sources */,
 				8B5587FD1D08460E00E25F18 /* PageControlViewController.swift in Sources */,
-				8B5588041D0848DF00E25F18 /* PageControl.swift in Sources */,
+				8B5588041D0848DF00E25F18 /* VPPageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +277,7 @@
 				8B5587FA1D08458900E25F18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -10,7 +10,7 @@ import UIKit
 
 class PageControlViewController: UIViewController {
 
-    @IBOutlet weak var pageControlView: PageControl!
+    @IBOutlet weak var pageControlView: VPPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class PageControlViewController: UIViewController {
 }
 
 extension PageControlViewController : PageControlDelegate {
-    func pageControl(pageControl: PageControl, didSelectPageIndex pageIndex: Int) {
+    func pageControl(pageControl: VPPageControl, didSelectPageIndex pageIndex: Int) {
         switch pageIndex {
         case 0:
             pageControl.backgroundColor = UIColor.whiteColor()

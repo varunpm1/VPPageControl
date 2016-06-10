@@ -1,5 +1,5 @@
 //
-//  PageControl.swift
+//  VPPageControl.swift
 //  PageControl
 //
 //  Created by Varun on 08/06/16.
@@ -10,10 +10,10 @@ import UIKit
 
 protocol PageControlDelegate : class {
     // Called whenever the pageControl view is tapped.
-    func pageControl(pageControl : PageControl, didSelectPageIndex pageIndex : Int)
+    func pageControl(pageControl : VPPageControl, didSelectPageIndex pageIndex : Int)
 }
 
-class PageControl: UIView {
+class VPPageControl: UIView {
     
     enum PageControlType : Int {
         case RoundedFilled = 0 // Circular with filled states. Default UIPageControl type. This is the default type
