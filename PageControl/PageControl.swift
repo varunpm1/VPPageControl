@@ -18,16 +18,22 @@ class PageControl: UIView {
     enum PageControlType : Int {
         case RoundedFilled = 0 // Circular with filled states. Default UIPageControl type. This is the default type
         case RoundedBorder // Circular with border type. Only Border and border color will be representing the states
+        case RoundedBorderFilledSelected // Circular with border type. Border color will be representing the unselected state. Filled represents the selected state
+        case RoundedFilledBorderSelected // Circular with filled type. Filled color will be representing the unselected state. Border represents the selected state
         case SquareFilled // Square with filled states. Fill color represent the states
         case SquareBorder // Square with border type. Border color will be representing the states
+        case SquareBorderFilledSelected // Square with border type. Border color will be representing the unselected state. Filled represents the selected state
+        case SquareFilledBorderSelected // Square with filled type. Filled color will be representing the unselected state. Border represents the selected state
         case DiamondFilled // Diamond with filled states. Fill color represent the states
         case DiamondBorder // Diamond with border type. Border color will be representing the states
+        case DiamondBorderFilledSelected // Diamond with border type. Border color will be representing the unselected state. Filled represents the selected state
+        case DiamondFilledBorderSelected // Diamond with filled type. Filled color will be representing the unselected state. Border represents the selected state
     }
     
     private let pageControlSpacing : CGFloat = 7
     private let pageControlWidth : CGFloat = 7
     
-    var pageControlType = PageControlType.DiamondFilled
+    var pageControlType = PageControlType.DiamondFilledBorderSelected
     
     weak var delegate : PageControlDelegate?
     
@@ -111,6 +117,15 @@ class PageControl: UIView {
             createRoundedPageControl(pageControlView)
             createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
             
+        case .RoundedBorderFilledSelected:
+            createRoundedPageControl(pageControlView)
+            createBorderFilledSelectedState(pageControlView, pageControlIndex: pageControlIndex)
+            
+            
+        case .RoundedFilledBorderSelected:
+            createRoundedPageControl(pageControlView)
+            createFilledBorderSelectedState(pageControlView, pageControlIndex: pageControlIndex)
+            
         case .SquareFilled:
             createSquarePageControl(pageControlView)
             createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
@@ -118,6 +133,14 @@ class PageControl: UIView {
         case .SquareBorder:
             createSquarePageControl(pageControlView)
             createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
+            
+        case .SquareBorderFilledSelected:
+            createSquarePageControl(pageControlView)
+            createBorderFilledSelectedState(pageControlView, pageControlIndex: pageControlIndex)
+            
+        case .SquareFilledBorderSelected:
+            createSquarePageControl(pageControlView)
+            createFilledBorderSelectedState(pageControlView, pageControlIndex: pageControlIndex)
             
         case .DiamondFilled:
             createSquarePageControl(pageControlView)
@@ -128,6 +151,16 @@ class PageControl: UIView {
             createSquarePageControl(pageControlView)
             createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
             createDiamondPageControl(pageControlView)
+            
+        case .DiamondBorderFilledSelected:
+            createSquarePageControl(pageControlView)
+            createDiamondPageControl(pageControlView)
+            createBorderFilledSelectedState(pageControlView, pageControlIndex: pageControlIndex)
+            
+        case .DiamondFilledBorderSelected:
+            createSquarePageControl(pageControlView)
+            createDiamondPageControl(pageControlView)
+            createFilledBorderSelectedState(pageControlView, pageControlIndex: pageControlIndex)
         }
     }
     
@@ -171,10 +204,32 @@ class PageControl: UIView {
     private func createBorderPageControl(pageControlView : UIView?, pageControlIndex : Int) {
         pageControlView?.layer.borderWidth = 1.0
         pageControlView?.layer.borderColor = getPageControlColorForIndex(pageControlIndex).CGColor
+        pageControlView?.backgroundColor = UIColor.clearColor()
     }
     
     private func createFilledPageControl(pageControlView : UIView?, pageControlIndex : Int) {
         pageControlView?.layer.borderWidth = 0.0
         pageControlView?.backgroundColor = getPageControlColorForIndex(pageControlIndex)
+        pageControlView?.layer.borderColor = UIColor.clearColor().CGColor
+    }
+    
+    // Create pageControl BorderFilledSelected state
+    private func createBorderFilledSelectedState(pageControlView : UIView?, pageControlIndex : Int) {
+        if currentPage != pageControlIndex {
+            createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
+        }
+        else {
+            createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
+        }
+    }
+    
+    // Create pageControl FilledBorderSelected state
+    private func createFilledBorderSelectedState(pageControlView : UIView?, pageControlIndex : Int) {
+        if currentPage == pageControlIndex {
+            createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
+        }
+        else {
+            createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
+        }
     }
 }
