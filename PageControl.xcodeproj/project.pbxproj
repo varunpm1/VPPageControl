@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		8B5587EA1D08458900E25F18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5587E91D08458900E25F18 /* AppDelegate.swift */; };
 		8B5587F11D08458900E25F18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B5587F01D08458900E25F18 /* Assets.xcassets */; };
-		8B5587FD1D08460E00E25F18 /* PageControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5587FB1D08460E00E25F18 /* PageControlViewController.swift */; };
-		8B5587FE1D08460E00E25F18 /* PageControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5587FC1D08460E00E25F18 /* PageControlViewController.xib */; };
 		8B5588001D0846E100E25F18 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5587FF1D0846E100E25F18 /* Default-568h@2x.png */; };
 		8B5588021D08479A00E25F18 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5588011D08479A00E25F18 /* LaunchScreen.xib */; };
-		8B5588041D0848DF00E25F18 /* VPPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5588031D0848DF00E25F18 /* VPPageControl.swift */; };
+		8B616DA51D0AD4E900EBEDD5 /* VPPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B616DA11D0AD4E900EBEDD5 /* VPPageControl.swift */; };
+		8B616DA61D0AD4E900EBEDD5 /* PageControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B616DA31D0AD4E900EBEDD5 /* PageControlViewController.swift */; };
+		8B616DA71D0AD4E900EBEDD5 /* PageControlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B616DA41D0AD4E900EBEDD5 /* PageControlViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +21,11 @@
 		8B5587E91D08458900E25F18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B5587F01D08458900E25F18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B5587F51D08458900E25F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B5587FB1D08460E00E25F18 /* PageControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlViewController.swift; sourceTree = "<group>"; };
-		8B5587FC1D08460E00E25F18 /* PageControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageControlViewController.xib; sourceTree = "<group>"; };
 		8B5587FF1D0846E100E25F18 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8B5588011D08479A00E25F18 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		8B5588031D0848DF00E25F18 /* VPPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPPageControl.swift; sourceTree = "<group>"; };
+		8B616DA11D0AD4E900EBEDD5 /* VPPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPPageControl.swift; sourceTree = "<group>"; };
+		8B616DA31D0AD4E900EBEDD5 /* PageControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlViewController.swift; sourceTree = "<group>"; };
+		8B616DA41D0AD4E900EBEDD5 /* PageControlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageControlViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +60,30 @@
 			isa = PBXGroup;
 			children = (
 				8B5587E91D08458900E25F18 /* AppDelegate.swift */,
-				8B5587FB1D08460E00E25F18 /* PageControlViewController.swift */,
-				8B5587FC1D08460E00E25F18 /* PageControlViewController.xib */,
-				8B5588031D0848DF00E25F18 /* VPPageControl.swift */,
+				8B616DA01D0AD4E900EBEDD5 /* VPPageControl */,
+				8B616DA21D0AD4E900EBEDD5 /* VPPageControlExample */,
 				8B5587F01D08458900E25F18 /* Assets.xcassets */,
 				8B5588011D08479A00E25F18 /* LaunchScreen.xib */,
 				8B5587F51D08458900E25F18 /* Info.plist */,
 			);
 			path = PageControl;
+			sourceTree = "<group>";
+		};
+		8B616DA01D0AD4E900EBEDD5 /* VPPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				8B616DA11D0AD4E900EBEDD5 /* VPPageControl.swift */,
+			);
+			path = VPPageControl;
+			sourceTree = "<group>";
+		};
+		8B616DA21D0AD4E900EBEDD5 /* VPPageControlExample */ = {
+			isa = PBXGroup;
+			children = (
+				8B616DA31D0AD4E900EBEDD5 /* PageControlViewController.swift */,
+				8B616DA41D0AD4E900EBEDD5 /* PageControlViewController.xib */,
+			);
+			path = VPPageControlExample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,9 +145,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B5588021D08479A00E25F18 /* LaunchScreen.xib in Resources */,
-				8B5587FE1D08460E00E25F18 /* PageControlViewController.xib in Resources */,
 				8B5587F11D08458900E25F18 /* Assets.xcassets in Resources */,
 				8B5588001D0846E100E25F18 /* Default-568h@2x.png in Resources */,
+				8B616DA71D0AD4E900EBEDD5 /* PageControlViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,9 +158,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B616DA61D0AD4E900EBEDD5 /* PageControlViewController.swift in Sources */,
+				8B616DA51D0AD4E900EBEDD5 /* VPPageControl.swift in Sources */,
 				8B5587EA1D08458900E25F18 /* AppDelegate.swift in Sources */,
-				8B5587FD1D08460E00E25F18 /* PageControlViewController.swift in Sources */,
-				8B5588041D0848DF00E25F18 /* VPPageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
