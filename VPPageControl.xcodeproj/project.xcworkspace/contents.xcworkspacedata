@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:PageControl.xcodeproj">
+      location = "self:/Users/varunpm/Desktop/PageControl/VPPageControl.xcodeproj">
    </FileRef>
 </Workspace>
