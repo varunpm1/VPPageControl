@@ -36,43 +36,47 @@ protocol PageControlDelegate : class {
     func pageControl(pageControl : VPPageControl, didSelectPageIndex pageIndex : Int)
 }
 
+enum PageControlType : Int {
+    case RoundedFilled = 0 // Circular with filled states. Default UIPageControl type. This is the default type
+    case RoundedBorder // Circular with border type. Only Border and border color will be representing the states
+    case RoundedBorderFilledSelected // Circular with border type. Border color will be representing the unselected state. Filled represents the selected state
+    case RoundedFilledBorderSelected // Circular with filled type. Filled color will be representing the unselected state. Border represents the selected state
+    case SquareFilled // Square with filled states. Fill color represent the states
+    case SquareBorder // Square with border type. Border color will be representing the states
+    case SquareBorderFilledSelected // Square with border type. Border color will be representing the unselected state. Filled represents the selected state
+    case SquareFilledBorderSelected // Square with filled type. Filled color will be representing the unselected state. Border represents the selected state
+    case DiamondFilled // Diamond with filled states. Fill color represent the states
+    case DiamondBorder // Diamond with border type. Border color will be representing the states
+    case DiamondBorderFilledSelected // Diamond with border type. Border color will be representing the unselected state. Filled represents the selected state
+    case DiamondFilledBorderSelected // Diamond with filled type. Filled color will be representing the unselected state. Border represents the selected state
+}
+
 class VPPageControl: UIView {
-    
-    enum PageControlType : Int {
-        case RoundedFilled = 0 // Circular with filled states. Default UIPageControl type. This is the default type
-        case RoundedBorder // Circular with border type. Only Border and border color will be representing the states
-        case RoundedBorderFilledSelected // Circular with border type. Border color will be representing the unselected state. Filled represents the selected state
-        case RoundedFilledBorderSelected // Circular with filled type. Filled color will be representing the unselected state. Border represents the selected state
-        case SquareFilled // Square with filled states. Fill color represent the states
-        case SquareBorder // Square with border type. Border color will be representing the states
-        case SquareBorderFilledSelected // Square with border type. Border color will be representing the unselected state. Filled represents the selected state
-        case SquareFilledBorderSelected // Square with filled type. Filled color will be representing the unselected state. Border represents the selected state
-        case DiamondFilled // Diamond with filled states. Fill color represent the states
-        case DiamondBorder // Diamond with border type. Border color will be representing the states
-        case DiamondBorderFilledSelected // Diamond with border type. Border color will be representing the unselected state. Filled represents the selected state
-        case DiamondFilledBorderSelected // Diamond with filled type. Filled color will be representing the unselected state. Border represents the selected state
-    }
     
     private let pageControlSpacing : CGFloat = 7
     private let pageControlWidth : CGFloat = 7
     
-    var pageControlType = PageControlType.DiamondFilled
+    // The type that represent the page control UI
+    var pageControlType = PageControlType.RoundedFilled
     
-    weak var delegate : PageControlDelegate?
-    
+    // The number of pages in page control
     @IBInspectable var numberOfPages : Int = 0 {
         didSet {
             setPageControlUI()
         }
     }
     
+    // The current selected page. Defaults to 0.
     @IBInspectable var currentPage : Int = 0
     
-    // Defaults to whiteColor.
+    // The unselected page control tintColor. Defaults to whiteColor.
     @IBInspectable var pageIndicatorTintColor : UIColor = UIColor.whiteColor()
     
-    // Defaults to whiteColor with 50% opacity
+    // The selected page control tintColor. Defaults to whiteColor with 50% opacity
     @IBInspectable var currentPageIndicatorTintColor : UIColor = UIColor.init(white: 1.0, alpha: 0.5)
+    
+    // The delegate for handling changes in page control states.
+    weak var delegate : PageControlDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

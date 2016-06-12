@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10116"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PageControlViewController" customModule="PageControl" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PageControlViewController" customModule="VPPageControl" customModuleProvider="target">
             <connections>
-                <outlet property="pageControlView" destination="OYS-X2-ggq" id="IIf-Qm-TqG"/>
+                <outlet property="pageControlView1" destination="OYS-X2-ggq" id="LuX-f0-y0n"/>
+                <outlet property="pageControlView2" destination="9KZ-S8-ITk" id="5GR-fN-nSD"/>
+                <outlet property="pageControlView3" destination="k4o-0d-tfl" id="Lh0-gg-w8L"/>
+                <outlet property="pageControlView4" destination="xXZ-29-tLT" id="crG-5U-0tE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,19 +19,49 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OYS-X2-ggq" customClass="VPPageControl" customModule="PageControl" customModuleProvider="target">
-                    <rect key="frame" x="67" y="105" width="240" height="128"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OYS-X2-ggq" customClass="VPPageControl" customModule="VPPageControl" customModuleProvider="target">
+                    <rect key="frame" x="67" y="64" width="240" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="6ZQ-Hn-ADA"/>
-                        <constraint firstAttribute="height" constant="128" id="cdL-1L-jHb"/>
+                        <constraint firstAttribute="height" constant="44" id="cdL-1L-jHb"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KZ-S8-ITk" customClass="VPPageControl" customModule="VPPageControl" customModuleProvider="target">
+                    <rect key="frame" x="67" y="172" width="240" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="L6o-uD-hVj"/>
+                        <constraint firstAttribute="height" constant="44" id="fJk-0o-6a3"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4o-0d-tfl" customClass="VPPageControl" customModule="VPPageControl" customModuleProvider="target">
+                    <rect key="frame" x="67" y="280" width="240" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="LhG-z0-OmR"/>
+                        <constraint firstAttribute="height" constant="44" id="XGG-g8-2Ft"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXZ-29-tLT" customClass="VPPageControl" customModule="VPPageControl" customModuleProvider="target">
+                    <rect key="frame" x="67" y="388" width="240" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="41U-LE-PRF"/>
+                        <constraint firstAttribute="height" constant="44" id="CbF-3e-Afu"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="xXZ-29-tLT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1Ae-vC-ut4"/>
                 <constraint firstItem="OYS-X2-ggq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8Tr-bL-XNi"/>
-                <constraint firstItem="OYS-X2-ggq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="105" id="fI6-uG-Voh"/>
+                <constraint firstItem="9KZ-S8-ITk" firstAttribute="top" secondItem="OYS-X2-ggq" secondAttribute="bottom" constant="64" id="Bta-zw-bhA"/>
+                <constraint firstItem="9KZ-S8-ITk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VVC-Uk-3z6"/>
+                <constraint firstItem="k4o-0d-tfl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Wt0-BH-0A0"/>
+                <constraint firstItem="OYS-X2-ggq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="fI6-uG-Voh"/>
+                <constraint firstItem="xXZ-29-tLT" firstAttribute="top" secondItem="k4o-0d-tfl" secondAttribute="bottom" constant="64" id="kNj-lm-aI6"/>
+                <constraint firstItem="k4o-0d-tfl" firstAttribute="top" secondItem="9KZ-S8-ITk" secondAttribute="bottom" constant="64" id="wyp-Ni-aed"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
