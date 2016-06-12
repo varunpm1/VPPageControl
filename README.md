@@ -27,18 +27,18 @@ The available public properties are:
 This defines how the page control dots would look like. The current available
 options are:
 
-**RoundedFilled** // Circular with filled states. Default UIPageControl type. This is the default type
-**RoundedBorder** // Circular with border type. Only Border and border color will be representing the states
-**RoundedBorderFilledSelected** // Circular with border type. Border color will be representing the unselected state. Filled represents the selected state
-**RoundedFilledBorderSelected** // Circular with filled type. Filled color will be representing the unselected state. Border represents the selected state
-**SquareFilled** // Square with filled states. Fill color represent the states
-**SquareBorder** // Square with border type. Border color will be representing the states
-**SquareBorderFilledSelected** // Square with border type. Border color will be representing the unselected state. Filled represents the selected state
-**SquareFilledBorderSelected** // Square with filled type. Filled color will be representing the unselected state. Border represents the selected state
-**DiamondFilled** // Diamond with filled states. Fill color represent the states
-**DiamondBorder** // Diamond with border type. Border color will be representing the states
-**DiamondBorderFilledSelected** // Diamond with border type. Border color will be representing the unselected state. Filled represents the selected state
-**DiamondFilledBorderSelected** // Diamond with filled type. Filled color will be representing the unselected state. Border represents the selected state
+* **RoundedFilled** // Circular with filled states. Default UIPageControl type. This is the default type
+* **RoundedBorder** // Circular with border type. Only Border and border color will be representing the states
+* **RoundedBorderFilledSelected** // Circular with border type. Border color will be representing the unselected state. Filled represents the selected state
+* **RoundedFilledBorderSelected** // Circular with filled type. Filled color will be representing the unselected state. Border represents the selected state
+* **SquareFilled** // Square with filled states. Fill color represent the states
+* **SquareBorder** // Square with border type. Border color will be representing the states
+* **SquareBorderFilledSelected** // Square with border type. Border color will be representing the unselected state. Filled represents the selected state
+* **SquareFilledBorderSelected** // Square with filled type. Filled color will be representing the unselected state. Border represents the selected state
+* **DiamondFilled** // Diamond with filled states. Fill color represent the states
+* **DiamondBorder** // Diamond with border type. Border color will be representing the states
+* **DiamondBorderFilledSelected** // Diamond with border type. Border color will be representing the unselected state. Filled represents the selected state
+* **DiamondFilledBorderSelected** // Diamond with filled type. Filled color will be representing the unselected state. Border represents the selected state
 
 ### numberOfPages
 
