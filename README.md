@@ -81,6 +81,11 @@ options.
 
 ## History
 
+###Version 1.1.0
+##Swift 3.0 Support added
+
+Fixed spacing issue in diamond type.
+
 ###Version 1.0.0
 
 Stable page control with support for rounded, square and diamond shaped
