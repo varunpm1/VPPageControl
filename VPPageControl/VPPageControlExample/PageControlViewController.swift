@@ -21,30 +21,30 @@ class PageControlViewController: UIViewController {
         
         pageControlView1.numberOfPages = 4
         pageControlView1.currentPage = 0
-        pageControlView1.pageIndicatorTintColor = UIColor.blackColor()
-        pageControlView1.currentPageIndicatorTintColor = UIColor.redColor()
-        pageControlView1.pageControlType = PageControlType.RoundedFilled
+        pageControlView1.pageIndicatorTintColor = UIColor.black
+        pageControlView1.currentPageIndicatorTintColor = UIColor.red
+        pageControlView1.pageControlType = PageControlType.roundedFilled
         pageControlView1.delegate = self
         
         pageControlView2.numberOfPages = 4
         pageControlView2.currentPage = 0
-        pageControlView2.pageIndicatorTintColor = UIColor.blackColor()
-        pageControlView2.currentPageIndicatorTintColor = UIColor.redColor()
-        pageControlView2.pageControlType = PageControlType.SquareFilled
+        pageControlView2.pageIndicatorTintColor = UIColor.black
+        pageControlView2.currentPageIndicatorTintColor = UIColor.red
+        pageControlView2.pageControlType = PageControlType.squareFilled
         pageControlView2.delegate = self
         
         pageControlView3.numberOfPages = 4
         pageControlView3.currentPage = 0
-        pageControlView3.pageIndicatorTintColor = UIColor.blackColor()
-        pageControlView3.currentPageIndicatorTintColor = UIColor.redColor()
-        pageControlView3.pageControlType = PageControlType.DiamondBorderFilledSelected
+        pageControlView3.pageIndicatorTintColor = UIColor.black
+        pageControlView3.currentPageIndicatorTintColor = UIColor.red
+        pageControlView3.pageControlType = PageControlType.diamondBorderFilledSelected
         pageControlView3.delegate = self
         
         pageControlView4.numberOfPages = 4
         pageControlView4.currentPage = 0
-        pageControlView4.pageIndicatorTintColor = UIColor.blackColor()
-        pageControlView4.currentPageIndicatorTintColor = UIColor.redColor()
-        pageControlView4.pageControlType = PageControlType.SquareBorderFilledSelected
+        pageControlView4.pageIndicatorTintColor = UIColor.black
+        pageControlView4.currentPageIndicatorTintColor = UIColor.red
+        pageControlView4.pageControlType = PageControlType.squareBorderFilledSelected
         pageControlView4.delegate = self
     }
 
@@ -55,22 +55,22 @@ class PageControlViewController: UIViewController {
 }
 
 extension PageControlViewController : PageControlDelegate {
-    func pageControl(pageControl: VPPageControl, didSelectPageIndex pageIndex: Int) {
+    func pageControl(_ pageControl: VPPageControl, didSelectPageIndex pageIndex: Int) {
         switch pageIndex {
         case 0:
-            pageControl.backgroundColor = UIColor.whiteColor()
+            pageControl.backgroundColor = UIColor.white
             
         case 1:
-            pageControl.backgroundColor = UIColor.yellowColor()
+            pageControl.backgroundColor = UIColor.yellow
             
         case 2:
-            pageControl.backgroundColor = UIColor.greenColor()
+            pageControl.backgroundColor = UIColor.green
             
         case 3:
-            pageControl.backgroundColor = UIColor.darkGrayColor()
+            pageControl.backgroundColor = UIColor.darkGray
             
         default:
-            pageControl.backgroundColor = UIColor.whiteColor()
+            pageControl.backgroundColor = UIColor.white
         }
     }
 }

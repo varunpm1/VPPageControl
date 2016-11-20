@@ -33,31 +33,31 @@ import UIKit
 
 protocol PageControlDelegate : class {
     // Called whenever the pageControl view is tapped.
-    func pageControl(pageControl : VPPageControl, didSelectPageIndex pageIndex : Int)
+    func pageControl(_ pageControl : VPPageControl, didSelectPageIndex pageIndex : Int)
 }
 
 enum PageControlType : Int {
-    case RoundedFilled = 0 // Circular with filled states. Default UIPageControl type. This is the default type
-    case RoundedBorder // Circular with border type. Only Border and border color will be representing the states
-    case RoundedBorderFilledSelected // Circular with border type. Border color will be representing the unselected state. Filled represents the selected state
-    case RoundedFilledBorderSelected // Circular with filled type. Filled color will be representing the unselected state. Border represents the selected state
-    case SquareFilled // Square with filled states. Fill color represent the states
-    case SquareBorder // Square with border type. Border color will be representing the states
-    case SquareBorderFilledSelected // Square with border type. Border color will be representing the unselected state. Filled represents the selected state
-    case SquareFilledBorderSelected // Square with filled type. Filled color will be representing the unselected state. Border represents the selected state
-    case DiamondFilled // Diamond with filled states. Fill color represent the states
-    case DiamondBorder // Diamond with border type. Border color will be representing the states
-    case DiamondBorderFilledSelected // Diamond with border type. Border color will be representing the unselected state. Filled represents the selected state
-    case DiamondFilledBorderSelected // Diamond with filled type. Filled color will be representing the unselected state. Border represents the selected state
+    case roundedFilled = 0 // Circular with filled states. Default UIPageControl type. This is the default type
+    case roundedBorder // Circular with border type. Only Border and border color will be representing the states
+    case roundedBorderFilledSelected // Circular with border type. Border color will be representing the unselected state. Filled represents the selected state
+    case roundedFilledBorderSelected // Circular with filled type. Filled color will be representing the unselected state. Border represents the selected state
+    case squareFilled // Square with filled states. Fill color represent the states
+    case squareBorder // Square with border type. Border color will be representing the states
+    case squareBorderFilledSelected // Square with border type. Border color will be representing the unselected state. Filled represents the selected state
+    case squareFilledBorderSelected // Square with filled type. Filled color will be representing the unselected state. Border represents the selected state
+    case diamondFilled // Diamond with filled states. Fill color represent the states
+    case diamondBorder // Diamond with border type. Border color will be representing the states
+    case diamondBorderFilledSelected // Diamond with border type. Border color will be representing the unselected state. Filled represents the selected state
+    case diamondFilledBorderSelected // Diamond with filled type. Filled color will be representing the unselected state. Border represents the selected state
 }
 
 class VPPageControl: UIView {
     
-    private let pageControlSpacing : CGFloat = 7
-    private let pageControlWidth : CGFloat = 7
+    fileprivate let pageControlSpacing : CGFloat = 7
+    fileprivate let pageControlWidth : CGFloat = 7
     
     // The type that represent the page control UI
-    var pageControlType = PageControlType.RoundedFilled
+    var pageControlType = PageControlType.roundedFilled
     
     // The number of pages in page control
     @IBInspectable var numberOfPages : Int = 0 {
@@ -70,7 +70,7 @@ class VPPageControl: UIView {
     @IBInspectable var currentPage : Int = 0
     
     // The unselected page control tintColor. Defaults to whiteColor.
-    @IBInspectable var pageIndicatorTintColor : UIColor = UIColor.whiteColor()
+    @IBInspectable var pageIndicatorTintColor : UIColor = UIColor.white
     
     // The selected page control tintColor. Defaults to whiteColor with 50% opacity
     @IBInspectable var currentPageIndicatorTintColor : UIColor = UIColor.init(white: 1.0, alpha: 0.5)
@@ -93,11 +93,11 @@ class VPPageControl: UIView {
     }
     
     //MARK: Handle the tap of page control
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touchObject = touches.first
         
         let startX = (bounds.size.width - CGFloat(numberOfPages) * pageControlWidth - CGFloat(numberOfPages - 1) * pageControlSpacing) / 2
-        let touchPoint = touchObject?.locationInView(self)
+        let touchPoint = touchObject?.location(in: self)
         
         if let touchPoint = touchPoint {
             // pageControlWidth / 2 for midPoint identification
@@ -112,7 +112,7 @@ class VPPageControl: UIView {
                 let pageControlView = viewWithTag(previousPageControlIndex + 1)
                 setUIForPageControlView(pageControlView, withIndex: previousPageControlIndex)
                 
-                UIView.animateWithDuration(0.15, animations: {
+                UIView.animate(withDuration: 0.15, animations: {
                     let currentPageControlView = self.viewWithTag(self.currentPage + 1)
                     self.setUIForPageControlView(currentPageControlView, withIndex: self.currentPage)
                 })
@@ -123,11 +123,11 @@ class VPPageControl: UIView {
     }
     
     //MARK: Update UI
-    private func updatePageControlViews() {
+    fileprivate func updatePageControlViews() {
         // Calculate the start X point for first page control
         var startX = (bounds.size.width - CGFloat(numberOfPages) * pageControlWidth - CGFloat(numberOfPages - 1) * pageControlSpacing) / 2
         
-        for pageControlIndex in 0.stride(to: numberOfPages, by: 1) {
+        for pageControlIndex in stride(from: 0, to: numberOfPages, by: 1) {
             let pageControlView = viewWithTag(pageControlIndex + 1)
             pageControlView?.center = CGPoint(x: (startX + pageControlWidth / 2), y: bounds.midY)
             setUIForPageControlView(pageControlView, withIndex: pageControlIndex)
@@ -136,57 +136,57 @@ class VPPageControl: UIView {
         }
     }
     
-    private func setUIForPageControlView(pageControlView : UIView?, withIndex pageControlIndex : Int) {
+    fileprivate func setUIForPageControlView(_ pageControlView : UIView?, withIndex pageControlIndex : Int) {
         switch pageControlType {
-        case .RoundedFilled:
+        case .roundedFilled:
             createRoundedPageControl(pageControlView)
             createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
             
-        case .RoundedBorder:
+        case .roundedBorder:
             createRoundedPageControl(pageControlView)
             createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
             
-        case .RoundedBorderFilledSelected:
+        case .roundedBorderFilledSelected:
             createRoundedPageControl(pageControlView)
             createBorderFilledSelectedState(pageControlView, pageControlIndex: pageControlIndex)
             
             
-        case .RoundedFilledBorderSelected:
+        case .roundedFilledBorderSelected:
             createRoundedPageControl(pageControlView)
             createFilledBorderSelectedState(pageControlView, pageControlIndex: pageControlIndex)
             
-        case .SquareFilled:
+        case .squareFilled:
             createSquarePageControl(pageControlView)
             createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
             
-        case .SquareBorder:
+        case .squareBorder:
             createSquarePageControl(pageControlView)
             createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
             
-        case .SquareBorderFilledSelected:
+        case .squareBorderFilledSelected:
             createSquarePageControl(pageControlView)
             createBorderFilledSelectedState(pageControlView, pageControlIndex: pageControlIndex)
             
-        case .SquareFilledBorderSelected:
+        case .squareFilledBorderSelected:
             createSquarePageControl(pageControlView)
             createFilledBorderSelectedState(pageControlView, pageControlIndex: pageControlIndex)
             
-        case .DiamondFilled:
+        case .diamondFilled:
             createSquarePageControl(pageControlView)
             createFilledPageControl(pageControlView, pageControlIndex: pageControlIndex)
             createDiamondPageControl(pageControlView)
             
-        case .DiamondBorder:
+        case .diamondBorder:
             createSquarePageControl(pageControlView)
             createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
             createDiamondPageControl(pageControlView)
             
-        case .DiamondBorderFilledSelected:
+        case .diamondBorderFilledSelected:
             createSquarePageControl(pageControlView)
             createDiamondPageControl(pageControlView)
             createBorderFilledSelectedState(pageControlView, pageControlIndex: pageControlIndex)
             
-        case .DiamondFilledBorderSelected:
+        case .diamondFilledBorderSelected:
             createSquarePageControl(pageControlView)
             createDiamondPageControl(pageControlView)
             createFilledBorderSelectedState(pageControlView, pageControlIndex: pageControlIndex)
@@ -194,13 +194,13 @@ class VPPageControl: UIView {
     }
     
     //MARK: Init UI
-    private func setPageControlUI() {
-        for pageControlIndex in 0.stride(to: numberOfPages, by: 1) {
+    fileprivate func setPageControlUI() {
+        for pageControlIndex in stride(from: 0, to: numberOfPages, by: 1) {
             addSubview(getPageControlForIndex(pageControlIndex))
         }
     }
     
-    private func getPageControlForIndex(index : Int) -> UIView {
+    fileprivate func getPageControlForIndex(_ index : Int) -> UIView {
         let pageControlView = UIView(frame: CGRect(x: 0, y: 0, width: pageControlWidth, height: pageControlWidth))
         pageControlView.tag = index + 1
         
@@ -208,42 +208,42 @@ class VPPageControl: UIView {
     }
     
     //MARK: Helper methods
-    private func getPageControlColorForIndex(index : Int) -> UIColor {
+    fileprivate func getPageControlColorForIndex(_ index : Int) -> UIColor {
         return (currentPage == index) ? currentPageIndicatorTintColor : pageIndicatorTintColor
     }
     
     // Create pageControl shapes
-    private func createRoundedPageControl(pageControlView : UIView?) {
+    fileprivate func createRoundedPageControl(_ pageControlView : UIView?) {
         pageControlView?.layer.cornerRadius = pageControlWidth / 2
         pageControlView?.layer.masksToBounds = true
     }
     
-    private func createSquarePageControl(pageControlView : UIView?) {
+    fileprivate func createSquarePageControl(_ pageControlView : UIView?) {
         pageControlView?.layer.cornerRadius = 0.0
         pageControlView?.layer.masksToBounds = true
     }
     
-    private func createDiamondPageControl(pageControlView : UIView?) {
-        var transform = CGAffineTransformIdentity
-        transform = CGAffineTransformRotate(transform, CGFloat(M_PI_4))
+    fileprivate func createDiamondPageControl(_ pageControlView : UIView?) {
+        var transform = CGAffineTransform.identity
+        transform = transform.rotated(by: CGFloat(M_PI_4))
         pageControlView?.transform = transform
     }
     
     // Create pageControl displayColor
-    private func createBorderPageControl(pageControlView : UIView?, pageControlIndex : Int) {
+    fileprivate func createBorderPageControl(_ pageControlView : UIView?, pageControlIndex : Int) {
         pageControlView?.layer.borderWidth = 1.0
-        pageControlView?.layer.borderColor = getPageControlColorForIndex(pageControlIndex).CGColor
-        pageControlView?.backgroundColor = UIColor.clearColor()
+        pageControlView?.layer.borderColor = getPageControlColorForIndex(pageControlIndex).cgColor
+        pageControlView?.backgroundColor = UIColor.clear
     }
     
-    private func createFilledPageControl(pageControlView : UIView?, pageControlIndex : Int) {
+    fileprivate func createFilledPageControl(_ pageControlView : UIView?, pageControlIndex : Int) {
         pageControlView?.layer.borderWidth = 0.0
         pageControlView?.backgroundColor = getPageControlColorForIndex(pageControlIndex)
-        pageControlView?.layer.borderColor = UIColor.clearColor().CGColor
+        pageControlView?.layer.borderColor = UIColor.clear.cgColor
     }
     
     // Create pageControl BorderFilledSelected state
-    private func createBorderFilledSelectedState(pageControlView : UIView?, pageControlIndex : Int) {
+    fileprivate func createBorderFilledSelectedState(_ pageControlView : UIView?, pageControlIndex : Int) {
         if currentPage != pageControlIndex {
             createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
         }
@@ -253,7 +253,7 @@ class VPPageControl: UIView {
     }
     
     // Create pageControl FilledBorderSelected state
-    private func createFilledBorderSelectedState(pageControlView : UIView?, pageControlIndex : Int) {
+    fileprivate func createFilledBorderSelectedState(_ pageControlView : UIView?, pageControlIndex : Int) {
         if currentPage == pageControlIndex {
             createBorderPageControl(pageControlView, pageControlIndex: pageControlIndex)
         }
