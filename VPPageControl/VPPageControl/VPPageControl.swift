@@ -1,7 +1,7 @@
 //
 //  VPPageControl.swift
 //  PageControl
-//  Version 1.0.0
+//  Version 1.1.0
 //
 //  Created by Varun on 08/06/16.
 //  Copyright © 2016 VPM. All rights reserved.
@@ -32,7 +32,7 @@
 import UIKit
 
 protocol PageControlDelegate : class {
-    // Called whenever the pageControl view is tapped.
+    /// Called whenever the pageControl view is tapped.
     func pageControl(_ pageControl : VPPageControl, didSelectPageIndex pageIndex : Int)
 }
 
@@ -53,29 +53,32 @@ enum PageControlType : Int {
 
 class VPPageControl: UIView {
     
-    fileprivate let pageControlSpacing : CGFloat = 7
-    fileprivate let pageControlWidth : CGFloat = 7
-    
-    // The type that represent the page control UI
+    /// The type that represent the page control UI
     var pageControlType = PageControlType.roundedFilled
     
-    // The number of pages in page control
+    /// Defines the space between 2 page control views
+    var pageControlSpacing : CGFloat = 7
+    
+    /// Defines the size for each page control view
+    var pageControlWidth : CGFloat = 7
+    
+    /// The number of pages in page control
     @IBInspectable var numberOfPages : Int = 0 {
         didSet {
             setPageControlUI()
         }
     }
     
-    // The current selected page. Defaults to 0.
+    /// The current selected page. Defaults to 0.
     @IBInspectable var currentPage : Int = 0
     
-    // The unselected page control tintColor. Defaults to whiteColor.
+    /// The unselected page control tintColor. Defaults to whiteColor.
     @IBInspectable var pageIndicatorTintColor : UIColor = UIColor.white
     
-    // The selected page control tintColor. Defaults to whiteColor with 50% opacity
+    /// The selected page control tintColor. Defaults to whiteColor with 50% opacity
     @IBInspectable var currentPageIndicatorTintColor : UIColor = UIColor.init(white: 1.0, alpha: 0.5)
     
-    // The delegate for handling changes in page control states.
+    /// The delegate for handling changes in page control states.
     weak var delegate : PageControlDelegate?
     
     override init(frame: CGRect) {
@@ -95,14 +98,15 @@ class VPPageControl: UIView {
     //MARK: Handle the tap of page control
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touchObject = touches.first
+        let actualPageControlSpacing = getActualPageControlSpacing()
         
-        let startX = (bounds.size.width - CGFloat(numberOfPages) * pageControlWidth - CGFloat(numberOfPages - 1) * pageControlSpacing) / 2
+        let startX = (bounds.size.width - CGFloat(numberOfPages) * pageControlWidth - CGFloat(numberOfPages - 1) * actualPageControlSpacing) / 2
         let touchPoint = touchObject?.location(in: self)
         
         if let touchPoint = touchPoint {
             // pageControlWidth / 2 for midPoint identification
             let tempPageControlSpacing = (touchPoint.x - startX - pageControlWidth / 2)
-            let selectedIndex = Int(round(tempPageControlSpacing / (pageControlWidth + pageControlSpacing)))
+            let selectedIndex = Int(round(tempPageControlSpacing / (pageControlWidth + actualPageControlSpacing)))
             
             if selectedIndex >= 0 && selectedIndex < numberOfPages {
                 // Reset the previous pageControlView color
@@ -124,15 +128,17 @@ class VPPageControl: UIView {
     
     //MARK: Update UI
     fileprivate func updatePageControlViews() {
+        let actualPageControlSpacing = getActualPageControlSpacing()
+        
         // Calculate the start X point for first page control
-        var startX = (bounds.size.width - CGFloat(numberOfPages) * pageControlWidth - CGFloat(numberOfPages - 1) * pageControlSpacing) / 2
+        var startX = (bounds.size.width - CGFloat(numberOfPages) * pageControlWidth - CGFloat(numberOfPages - 1) * actualPageControlSpacing) / 2
         
         for pageControlIndex in stride(from: 0, to: numberOfPages, by: 1) {
             let pageControlView = viewWithTag(pageControlIndex + 1)
             pageControlView?.center = CGPoint(x: (startX + pageControlWidth / 2), y: bounds.midY)
             setUIForPageControlView(pageControlView, withIndex: pageControlIndex)
             
-            startX += pageControlSpacing + pageControlWidth
+            startX += actualPageControlSpacing + pageControlWidth
         }
     }
     
@@ -210,6 +216,20 @@ class VPPageControl: UIView {
     //MARK: Helper methods
     fileprivate func getPageControlColorForIndex(_ index : Int) -> UIColor {
         return (currentPage == index) ? currentPageIndicatorTintColor : pageIndicatorTintColor
+    }
+    
+    // Calculate the pagecontrol's spacing
+    fileprivate func getActualPageControlSpacing() -> CGFloat {
+        var actualPageControlSpacing = pageControlSpacing
+        
+        // If type is diamond, then we have to consider the diagonal spacing for actual space calculation
+        if pageControlType == .diamondFilled || pageControlType == .diamondBorder || pageControlType == .diamondFilledBorderSelected || pageControlType == .diamondBorderFilledSelected {
+            
+            // Diagonal formula - sqrt(base*base + height*height) - Here base and height are equal
+            actualPageControlSpacing = sqrt(2) * pageControlWidth
+        }
+        
+        return actualPageControlSpacing
     }
     
     // Create pageControl shapes

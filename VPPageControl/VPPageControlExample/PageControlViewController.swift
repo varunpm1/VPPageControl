@@ -9,7 +9,7 @@
 import UIKit
 
 class PageControlViewController: UIViewController {
-
+    
     @IBOutlet weak var pageControlView1: VPPageControl!
     @IBOutlet weak var pageControlView2: VPPageControl!
     @IBOutlet weak var pageControlView3: VPPageControl!
